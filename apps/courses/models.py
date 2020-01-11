@@ -7,6 +7,8 @@ from organization.models import CourseOrg, Teacher
 
 
 class Course(models.Model):
+    # Course -> Lesson -> Video
+    # 课程基本信息 -> 章节信息 -> 章节下视频信息
     course_org = models.ForeignKey(CourseOrg, verbose_name='课程机构', null=True, on_delete=models.CASCADE)
     teacher = models.ForeignKey(Teacher, verbose_name='讲师', null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, verbose_name='课程名')
@@ -55,6 +57,7 @@ class BannerCourse(Course):
 
 
 class Lesson(models.Model):
+    # 章节信息
     course = models.ForeignKey(Course, verbose_name='课程', on_delete=models.CASCADE)
     name = models.CharField(max_length=100, verbose_name='章节名')
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
@@ -72,6 +75,7 @@ class Lesson(models.Model):
 
 
 class Video(models.Model):
+    # 章节下视频信息
     lesson = models.ForeignKey(Lesson, verbose_name='章节', on_delete=models.CASCADE)
     name = models.CharField(max_length=100, verbose_name='视频名')
     learn_times = models.IntegerField(default=0, verbose_name='学习时长（分钟数）')

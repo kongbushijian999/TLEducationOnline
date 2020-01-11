@@ -17,6 +17,7 @@ class UserProfile(AbstractUser):
         verbose_name = '用户信息'
         verbose_name_plural = verbose_name
 
+    # 如果不重载该方法，在print UserProfile的实例的时候，就不能打印我们自定义的字符串
     def __str__(self):
         return self.username
 
@@ -32,7 +33,8 @@ class EmailVerifyRecord(models.Model):
     code = models.CharField(max_length=20, verbose_name='验证码')
     email = models.EmailField(max_length=50, verbose_name='邮箱')
     send_type = models.CharField(choices=(('register', '注册'), ('forget', '找回密码'), ('update_email', '修改邮箱')), max_length=20, verbose_name='验证码类型')
-    send_time = models.DateTimeField(default=datetime.now, verbose_name='发送时间')#要去掉now()后的括号，不然就会根据model编译的时间来生成默认时间
+    send_time = models.DateTimeField(default=datetime.now, verbose_name='发送时间')
+    # 要去掉now()后的括号，不然就会根据model编译的时间来生成默认时间，不是我们想要的，去掉后则是class实例化的时间
 
     class Meta:
         verbose_name = '邮箱验证码'

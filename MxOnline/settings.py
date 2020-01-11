@@ -14,6 +14,7 @@ import os
 import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# 设置为Python的搜索目录之下，不加的话，通过Mark Directory as设置为Sources Root可以直接在Pycharm编辑器内正常运行，但在命令行下会找不到相应文件而报错
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
@@ -31,7 +32,7 @@ ALLOWED_HOSTS = ['*']
 AUTHENTICATION_BACKENDS = ('users.views.CustomBackend',)
 
 # Application definition
-
+# 不注册app的话就无法通过migration生成相应的数据表
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -86,7 +87,7 @@ WSGI_APPLICATION = 'MxOnline.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
+# 连接数据库
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',

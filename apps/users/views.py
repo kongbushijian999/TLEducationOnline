@@ -179,7 +179,6 @@ class UserInfoView(LoginRequiredMixin, View):
             return HttpResponse(json.dumps(user_info_form.errors), content_type='application/json')
 
 
-
 class UploadImageView(LoginRequiredMixin, View):
     # 用户修改头像
     def post(self, request):
@@ -340,6 +339,7 @@ def page_not_found(request, **kwargs):
     response = render_to_response('404.html', {})
     response.status_code = 404
     return response
+
 
 def page_error(request):
     # 全局500处理函数

@@ -164,7 +164,8 @@ class AddFavView(View):
         fav_type = request.POST.get('fav_type', 0)
 
         # 判断用户是否登录
-        if not request.user.is_authenticated: # 未登录时
+        if not request.user.is_authenticated:
+            # 未登录时
             return HttpResponse('{"status":"fail", "msg":"用户未登录"}', content_type='application/json')
         # 判断用户是否收藏，记录状态如何
         exist_records = UserFavorite.objects.filter(user=request.user, fav_id=int(fav_id), fav_type=int(fav_type))
