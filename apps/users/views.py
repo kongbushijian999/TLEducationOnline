@@ -96,7 +96,7 @@ class RegisterView(View):
             # 写入欢迎注册消息
             user_message = UserMessage()
             user_message.user = user_profile.id
-            user_message.message = '欢迎注册幕学在线网'
+            user_message.message = '欢迎注册TL在线教育'
             user_message.save()
 
             send_register_email(user_name, 'register')
@@ -317,7 +317,7 @@ class MyMessageView(LoginRequiredMixin, View):
 
 
 class IndexView(View):
-    # 幕学在线网首页
+    # TL在线教育首页
     def get(self, request):
         # 取出轮播图
         # print(1/0)

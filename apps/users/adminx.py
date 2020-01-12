@@ -44,8 +44,8 @@ class BaseSetting(object): # 在最上方添加一个‘主题’下拉框
 
 
 class GlobalSettings(object):
-    site_title = '幕学后台管理系统' # 左上角logo文字处
-    site_footer = '幕学在线网'      # 底部中间的文字
+    site_title = 'TL在线教育后台管理系统' # 左上角logo文字处
+    site_footer = 'TL在线教育'      # 底部中间的文字
     menu_style = 'accordion'        # 将左侧的表单收起来
 
 

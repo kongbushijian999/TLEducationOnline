@@ -1,5 +1,5 @@
 """
-WSGI config for MxOnline project.
+WSGI config for TLEducationOnline project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MxOnline.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'TLEducationOnline.settings')
 
 application = get_wsgi_application()

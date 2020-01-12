@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""MxOnline URL Configuration
+"""TLEducationOnline URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -23,7 +23,7 @@ import xadmin
 
 from users.views import LogoutView, LoginView, RegisterView, ActiveUserView, ForgetPwdView, ResetView, ModifyPwdView, IndexView
 
-from MxOnline.settings import MEDIA_ROOT
+from TLEducationOnline.settings import MEDIA_ROOT
 
 
 urlpatterns = [
