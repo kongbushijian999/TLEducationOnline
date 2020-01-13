@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block title %}
-课程机构列表 - 慕学在线网
+课程机构列表 - TL在线教育
 {% endblock %}
 {% block custom_bread %}{% endblock %}
 {% block custom_js %}
@@ -99,7 +99,7 @@
                                         <span class="fr">学习人数：{{ course.students }}</span>
                                     </div>
                                     <div class="bottom">
-                                        <span class="fl" title="慕课网">{{ course.course_org.name }}</span>
+                                        <span class="fl" title="TL在线教育">{{ course.course_org.name }}</span>
                                         <span class="star fr">{{ course.fav_nums }}</span>
                                     </div>
                                 </div>
@@ -133,7 +133,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <p><span class="key" title="慕课网">{{ course_org.name }}</span></p>
+                                        <p><span class="key" title="TL在线教育">{{ course_org.name }}</span></p>
                                     </a>
                                 </li>
                             {% endfor %}

@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}公开课评论 - 慕学在线网{% endblock %}
+{% block title %}公开课评论 - TL在线教育{% endblock %}
 {% block custom_bread %}
     <section>
 	<div class="wp">
 		<div class="crumbs">
 			<ul>
-				<li><a href="/">首页</a>></li>
+				<li><a href="{% url 'index' %}">首页</a>></li>
                 <li><a href="{% url 'course_list' %}">公开课程</a>></li>
                 <li><a href="{% url 'course_detail' course.id %}">课程详情</a>></li>
                 <li>课程评论</li>

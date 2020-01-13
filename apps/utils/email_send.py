@@ -7,6 +7,7 @@ from users.models import EmailVerifyRecord
 from TLEducationOnline.settings import EMAIL_FROM
 
 
+# 生成随机字符串方法
 def random_str(randomlength=8):
     str = ''
     chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789'
@@ -34,6 +35,7 @@ def send_register_email(email, send_type='register'):
     if send_type == 'register':
         email_title = 'TL在线教育注册激活链接'
         email_body = '请点击下面的链接激活你的账号： http://127.0.0.1:8000/active/{0}'.format(code)
+        # Django提供的函数
         send_status = send_mail(email_title, email_body, EMAIL_FROM, [email])
 
         if send_status:

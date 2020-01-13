@@ -21,7 +21,8 @@ from courses.models import Course
 
 
 class CustomBackend(ModelBackend):
-    # 用户重新登录
+    # 用户认证方法的重写，因为默认的认证方法只支持用户名为username的查询，不支持通过邮箱登录
+    # 之后要在settings.py里配置 AUTHENTICATION_BACKENDS = ('users.views.CustomBackend',)
     def authenticate(self, request, username=None, password=None, **kwargs):
         try:
             user = UserProfile.objects.get(Q(username=username)|Q(email=username))
@@ -40,17 +41,25 @@ class LogoutView(View):
 
 
 class LoginView(View):
+    # 点击登录按钮后先是GET方法传进来，进入login.html登录页面
     def get(self, request):
         return render(request, 'login.html', {})
 
+    # 点击‘立即登录’按钮后，是POST方法把数据传进来
     def post(self, request):
+        # 先做表单验证，把具体的信息单独封装起来，减少后台逻辑，Django会帮我们自动返回验证信息，我们只需要配置就能完成这些功能
+        # 这个key值一定要与html中对应的name属性完全一致
         login_form = LoginForm(request.POST)
         if login_form.is_valid():
             user_name = request.POST.get('username', '') #这个key值一定要与html中对应的name属性完全一致
             pass_word = request.POST.get('password', '')
+            # 认证方法，查询数据库判断用户名和密码是否正确，
             user = authenticate(username=user_name, password=pass_word)
             if user is not None:  # 如果登录成功，跳转到首页
+                # 判断用户是否激活
                 if user.is_active:
+                    # 用户登录，是个默认函数
+                    # 根据用户的信息生成了一个session_id，保存在数据库中，因为在用户登录之后，它需要去查询这个session，取出用户的基本信息
                     login(request, user)
                     return HttpResponseRedirect(reverse('index'))
                 else:
@@ -83,6 +92,7 @@ class RegisterView(View):
         register_form = RegisterForm(request.POST)
         if register_form.is_valid():
             user_name = request.POST.get('email', '')
+            # 注册之前先检查用户是否已经存在，若已经存在，则提示'用户已经存在'
             if UserProfile.objects.filter(email=user_name):
                 return render(request, 'register.html', {'register_form':register_form, 'msg': '用户已经存在'})
             pass_word = request.POST.get('password', '')
@@ -106,6 +116,7 @@ class RegisterView(View):
 
 
 class ActiveUserView(View): # 激活
+    # 参数active_code要与urls.py中配置的一样，这样就能把该参数传递进来
     def get(self, request, active_code):
         all_records = EmailVerifyRecord.objects.filter(code=active_code) # 通过code查找记录
         if all_records: # 如果不为空

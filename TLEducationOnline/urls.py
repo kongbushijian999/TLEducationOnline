@@ -28,14 +28,17 @@ from TLEducationOnline.settings import MEDIA_ROOT
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
+
     path('', IndexView.as_view(), name='index'),
     path('login/', LoginView.as_view(), name='login'),  # login是指向这个函数，login()是调用这个函数
     path('logout/', LogoutView.as_view(), name='logout'),  # login是指向这个函数，login()是调用这个函数
 
     path('register/', RegisterView.as_view(), name='register'),
     path('captcha/', include('captcha.urls')),
+    # 邮箱激活
     re_path(r'^active/(?P<active_code>.*)/$', ActiveUserView.as_view(), name='user_active'),
     path('forget/', ForgetPwdView.as_view(), name='forget_pwd'),
+    # 通过邮箱重置密码
     re_path(r'^reset/(?P<active_code>.*)/$', ResetView.as_view(), name='reset_pwd'),
     path('modify_pwd/', ModifyPwdView.as_view(), name='modify_pwd'),
 

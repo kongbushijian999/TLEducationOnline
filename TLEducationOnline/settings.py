@@ -26,6 +26,8 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 SECRET_KEY = '=e^f@lpwnsf^jri#!oc0z_04k(%0xp8bcrfxbdqb#!c#g6qu1q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# 当DEBUG为TRUE时，有用，当DEBUG为FALSE时，就默认为生产环境，将不再起作用，需要自己重新配置
+# 此时必须注释掉，否则会报错说它包含新配置的STATIC_ROOT
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
@@ -134,9 +136,7 @@ USE_TZ = False  #为True时使用国际时间，用False则使用本地时间
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
-
-# 当DEBUG为TRUE时，有用，当DEBUG为FALSE时，就默认为生产环境，将不再起作用，需要自己重新配置
-# 此时必须注释掉，否则会报错说它包含新配置的STATIC_ROOT
+# 配置static目录路劲
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
