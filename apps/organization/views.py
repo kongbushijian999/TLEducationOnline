@@ -72,6 +72,7 @@ class AddUserAskView(View):
     def post(self, request):
         userask_form = UserAskForm(request.POST)
         if userask_form.is_valid():
+            # commit=True，提交到数据库并保存，如果为False，则只提交不保存
             user_ask = userask_form.save(commit=True)
             return HttpResponse('{"status":"success"}', content_type='application/json')
         else:
@@ -122,7 +123,7 @@ class OrgCourseView(View):
 
 
 class OrgDescView(View):
-    # 机构课程列表页
+    # 机构介绍页
     def get(self, request, org_id):
         current_page = 'desc'
         course_org = CourseOrg.objects.get(id=int(org_id))
@@ -139,7 +140,7 @@ class OrgDescView(View):
 
 
 class OrgTeacherView(View):
-    # 机构首页
+    # 机构教师列表页
     def get(self, request, org_id):
         current_page = 'teacher'
         course_org = CourseOrg.objects.get(id=int(org_id))

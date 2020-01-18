@@ -55,6 +55,9 @@ class BannerCourse(Course):
         verbose_name_plural = verbose_name
         proxy = True
 
+    def __str__(self):
+        return self.name
+
 
 class Lesson(models.Model):
     # 章节信息

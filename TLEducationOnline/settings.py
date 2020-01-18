@@ -147,6 +147,7 @@ EMAIL_HOST_PASSWORD = 'Wuhan500274'
 EMAIL_USE_TLS = True
 EMAIL_FROM = 'tonglefight@sina.com'
 
+# 图片上传文件的路径
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

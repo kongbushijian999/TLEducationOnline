@@ -116,7 +116,7 @@
 				<h1>课程机构</h1>
 				<div class="module3 eachmod">
 					<div class="module3_1 left">
-						<img width="228" height="463" src="/static/images/module3_1.jpg"/>
+						<img width="228" height="460" src="/static/images/module3_1.jpg"/>
 						<p class="fisrt_word">名校来袭<br/>权威认证</p>
 						<a class="more" href="{% url 'org_list' %}">查看更多机构 ></a>
 					</div>
@@ -126,7 +126,7 @@
                                 <li class="{% if forloop.counter|divisibleby:5 %}five{% endif %}">
                                     <a href="{% url 'org_home' course_org.id %}">
                                         <div class="company">
-                                            <img width="184" height="100" src="{{ MEDIA_URL }}{{ course_org.image }}"/>
+                                            <img width="100" height="100" src="{{ MEDIA_URL }}{{ course_org.image }}"/>
                                             <div class="score">
                                                 <div class="circle">
                                                     <h2>{{ course_org.tag }}</h2>
