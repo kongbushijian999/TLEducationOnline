@@ -39,6 +39,7 @@ class Course(models.Model):
     get_zj_nums.short_description = "章节数"
 
     def get_learn_users(self):
+        # 获取学习了该课程的用户数据
         return self.usercourse_set.all()[:5]
 
     def get_course_lesson(self):

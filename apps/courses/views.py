@@ -37,7 +37,7 @@ class CourseListView(View):
         except PageNotAnInteger:
             page = 1
 
-        p = Paginator(all_courses, 3, request=request)
+        p = Paginator(all_courses, 9, request=request)
         courses = p.page(page)
 
         return render(request, 'course-list.html', {
@@ -67,7 +67,8 @@ class CourseDetailView(View):
 
         tag = course.tag
         if tag:
-            relate_courses = Course.objects.filter(tag=tag)[:1]
+            # ~Q(id=course.id)排除掉推荐的是同一门课程的情况
+            relate_courses = Course.objects.filter(Q(tag=tag)&~Q(id=course.id))[:1]
         else:
             relate_courses = []
 
