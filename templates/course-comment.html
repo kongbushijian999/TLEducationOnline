@@ -111,13 +111,13 @@
                        </ul>
                     </div>
                         <div class="box mb40">
-                        <h4>讲师提示</h4>
+                        <h4>教师提示</h4>
                         <div class="teacher-info">
-                            <a href="/u/315464/courses?sort=publish" target="_blank">
+                            <a href="{% url 'teacher_detail' course.teacher.id %}" target="_blank">
                                 <img src='{{ MEDIA_URL }}{{ course.teacher.image }}' width='80' height='80' />
                             </a>
         <span class="tit">
-          <a href="/u/315464/courses?sort=publish" target="_blank">{{ course.teacher.name }}</a>
+          <a href="{% url 'teacher_detail' course.teacher.id %}" target="_blank">{{ course.teacher.name }}</a>
         </span>
                             <span class="job">{{ course.teacher.work_position }}</span>
                         </div>
@@ -151,20 +151,9 @@
                                             </li>
                                         {% endfor %}
 
-
-
                                     </ul>
                                 </div>
-                                <div class="cp-tab-pannel js-comp-tab-pannel" data-pannel="plan">
-                                    <ul class="other-list">
-                                        <li class="curr">
-                                            <a href="/course/programdetail/pid/31?src=sug" target="_blank">
-                                                <img src="http://img.mukewang.com/56551e6700018b0c09600720-240-135.jpg" alt="Java工程师">
-                                                <span class="name autowrap">Java工程师</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+
                             </div>
                         </div>
 
@@ -191,8 +180,8 @@
                 $.ajax({
                     cache: false,
                     type: "POST",
-                    url: "/course/add_comment/",
-                    data: {'course_id': 10, 'comments': comments},
+                    url: "{% url 'add_comment' %}",
+                    data: {'course_id': {{ course.id }}, 'comments': comments},
                     async: true,
                     beforeSend: function (xhr, settings) {
                         xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
@@ -200,7 +189,7 @@
                     success: function (data) {
                         if (data.status == 'fail') {
                             if (data.msg == '用户未登录') {
-                                window.location.href = "login.html";
+                                window.location.href = "{% url 'login' %}";
                             } else {
                                 alert(data.msg)
                             }

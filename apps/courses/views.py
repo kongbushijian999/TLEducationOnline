@@ -114,15 +114,33 @@ class CommentsView(LoginRequiredMixin, View):
     def get(self, request, course_id):
         course = Course.objects.get(id=int(course_id))
         all_resources = CourseResource.objects.filter(course=course)
-        all_comments = CourseComments.objects.all()
+        all_comments = CourseComments.objects.filter(course=course).order_by('-add_time')
+
+        # 查询用户是否已经关联了该课程
+        user_courses = UserCourse.objects.filter(user=request.user, course=course)
+        if not user_courses:
+            user_course = UserCourse(user=request.user, course=course)
+            user_course.save()
+
+        user_courses = UserCourse.objects.filter(id=int(course_id))
+        # 学习该课程的所有用户id
+        user_ids = [user_course.user.id for user_course in user_courses]
+        # 通过所有的用户id，取出这些id相关联的所有课程，此时每个课程都包含了一堆信息，例如：课程名，添加时间等等
+        all_user_courses = UserCourse.objects.filter(user_id__in=user_ids)  # _id是通过user这个外键取id，__in是因为传进去的是一个list
+        # 取出所有课程的id
+        course_ids = [user_course.course.id for user_course in all_user_courses]
+        # 排序取出点击数排在前5的课程
+        relate_courses = Course.objects.filter(id__in=course_ids).order_by('-click_nums')[:5]
+
         return render(request, 'course-comment.html', {
             'course': course,
             'course_resources': all_resources,
-            'all_comments': all_comments
+            'all_comments': all_comments,
+            'relate_courses': relate_courses
         })
 
 
-class AddCommentsView(View):
+class AddCommentsView(LoginRequiredMixin, View):
     # 用户添加课程评论
     def post(self, request):
         # 判断用户是否登录
@@ -143,7 +161,7 @@ class AddCommentsView(View):
             return HttpResponse('{"status":"fail", "msg":"添加失败"}', content_type='application/json')
 
 
-class VideoPlayView(View):
+class VideoPlayView(LoginRequiredMixin, View):
     # 视频播放页面
     def get(self, request, video_id):
         video = Video.objects.get(id=int(video_id))
