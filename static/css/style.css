@@ -1304,6 +1304,7 @@ textarea:focus {
 .header .middle .wp {
     height: 100%;
     background: url(../images/header_middle.png) no-repeat right 10px;
+    padding-top: 8px;
 }
 
 /*select*/
@@ -3270,7 +3271,7 @@ footer .footer .line {
 }
 
 .butler_list_box .right {
-    width: 240px;
+    width: 260px;
     height: auto;
     overflow: hidden;
     float: right;
@@ -3330,9 +3331,11 @@ footer .footer .line {
 }
 
 .butler_list_box dt img {
-    width: 100%;
-    float: left;
+    width: 100px;
+    /*float: left;*/
+    margin-left: 42px;
     text-align: center;
+
 }
 
 .butler_list_box dt .btn {
@@ -3488,7 +3491,7 @@ footer .footer .line {
 .butler_list_box .right .des {
     border-bottom: 1px solid #eaeaea;
     padding: 10px 5px;
-    width: 200px;
+    width: 280px;
     height: 60px;
     vertical-align: middle;
 }
@@ -3512,7 +3515,7 @@ footer .footer .line {
 .butler_list_box .right dt {
     width: 50px;
     height: 50px;
-    margin: 0 10px;
+    margin: 0 7px;
     border-width: 2px;
 }
 
@@ -3521,7 +3524,7 @@ footer .footer .line {
     height: 50px;
     /*margin-top: 10px;*/
     line-height: 150%;
-    float: right;
+    float: left;
 }
 
 .picbig.key {
@@ -4950,10 +4953,11 @@ footer .footer .line {
 }
 
 .butler_list.company dt {
-    width: 200px;
-    height: 120px;
-    border-width: 1px;
-    border-radius: 0;
+    width: 184px;
+    height: 100px;
+    border: 1px solid #e5e5e5;
+    /*border-width: 1px;*/
+    /*border-radius: 0;*/
     margin-top: 25px;
     overflow: hidden;
 }

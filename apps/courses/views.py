@@ -21,7 +21,9 @@ class CourseListView(View):
         # 如果有这个keywords
         if search_keywords:
             all_courses = all_courses.filter(Q(name__icontains=search_keywords)|Q(desc__icontains=search_keywords)
-                                             |Q(detail__icontains=search_keywords))
+                                             |Q(detail__icontains=search_keywords)|Q(category__icontains=search_keywords)
+                                             |Q(tag__icontains=search_keywords)|Q(youneed_know__icontains=search_keywords)
+                                             |Q(teacher_tell__icontains=search_keywords))
 
         # 课程排序
         sort = request.GET.get('sort', '')

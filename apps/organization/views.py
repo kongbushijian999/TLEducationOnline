@@ -25,8 +25,8 @@ class OrgView(View):
         search_keywords = request.GET.get('keywords', '')  # 通过地址传递
         # 如果有这个keywords
         if search_keywords:
-            all_orgs = all_orgs.filter(
-                Q(name__icontains=search_keywords) | Q(desc__icontains=search_keywords))
+            all_orgs = all_orgs.filter(Q(name__icontains=search_keywords)|Q(tag__icontains=search_keywords)
+                                       |Q(desc__icontains=search_keywords))
 
         # 取出筛选城市
         city_id = request.GET.get('city', '')
@@ -227,16 +227,17 @@ class TeacherListView(View):
         search_keywords = request.GET.get('keywords', '')  # 通过地址传递
         # 如果有这个keywords
         if search_keywords:
-            all_teachers = all_teachers.filter(
-                Q(name__icontains=search_keywords) | Q(work_company__icontains=search_keywords) |
-                Q(work_position__icontains=search_keywords))
+            all_teachers = all_teachers.filter(Q(name__icontains=search_keywords)
+                                               |Q(work_company__icontains=search_keywords)
+                                               |Q(work_position__icontains=search_keywords)
+                                               |Q(points__icontains=search_keywords))
 
         sort = request.GET.get('sort', '')
         if sort:
             if sort == 'hot':
                 all_teachers = all_teachers.order_by('-click_nums')
 
-        sort_teachers = Teacher.objects.all().order_by('-click_nums')[:3]
+        sort_teachers = Teacher.objects.all().order_by('-click_nums')[:5]
 
         # 对教师进行分页
         try:
