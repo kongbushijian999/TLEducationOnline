@@ -54,7 +54,7 @@
 			</div>
             {% for course_org in all_orgs.object_list %}
                 <dl class="des difdes">
-                    <dt>
+                    <dt class="org-image-list">
                         <a href="{% url 'org_home' course_org.id %}">
                             <img height="100" class="scrollLoading" data-url="{{ MEDIA_URL }}{{ course_org.image }}"/>
                         </a>
@@ -138,9 +138,9 @@
 
                     <dt class="num fl">{{ forloop.counter }}</dt>
                     <div>
-                        <dt>
+                        <dt class="hot-org-image-list">
                             <a href="{% url 'org_home' hot_org.id %}">
-                                <img width="100" height="60" class="scrollLoading" data-url="{{ MEDIA_URL }}{{ hot_org.image }}"/>
+                                <img width="60" height="60" class="scrollLoading" data-url="{{ MEDIA_URL }}{{ hot_org.image }}"/>
                             </a>
                         </dt>
                     </div>

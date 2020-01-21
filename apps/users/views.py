@@ -109,6 +109,7 @@ class RegisterView(View):
             user_message.message = '欢迎注册TL在线教育'
             user_message.save()
 
+            # 调用utils.email_send里面的send_register_email()方法
             send_register_email(user_name, 'register')
             return render(request, 'login.html')
         else:
@@ -139,6 +140,7 @@ class ForgetPwdView(View):
         forget_form = ForgetForm(request.POST)
         if forget_form.is_valid():
             email = request.POST.get('email', '')
+            # 调用utils.email_send里面的send_register_email()方法
             send_register_email(email, 'forget')
             return render(request, 'send_success.html')
         else:
@@ -200,6 +202,7 @@ class UploadImageView(LoginRequiredMixin, View):
         #     request.user.image = image
         #     request.user.save()
         # 方法二
+        # 文件是放在request.FILES里的，所以必须加入这个参数，不然文件类型是传递不过来的
         image_form = UploadImageForm(request.POST, request.FILES, instance=request.user)
         if image_form.is_valid():
             image_form.save()
@@ -233,6 +236,7 @@ class SendEmailCodeView(LoginRequiredMixin, View):
         if UserProfile.objects.filter(email=email):
             return HttpResponse('{"email": "邮箱已存在"}', content_type='application/json')
 
+        # 调用utils.email_send里面的send_register_email()方法
         send_register_email(email, 'update_email')
         return HttpResponse('{"status":"success"}', content_type='application/json')
 

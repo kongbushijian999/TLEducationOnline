@@ -6,7 +6,7 @@
         <div class="wp">
             <ul  class="crumbs">
                 <li><a href="{% url 'index' %}">首页</a>></li>
-                <li><a href="/user/home/">个人中心</a>></li>
+                <li><a href="{% url 'user_info' %}">个人中心</a>></li>
                 <li>个人信息</li>
             </ul>
         </div>
@@ -45,7 +45,7 @@
                             <i class="error-tips"></i>
                         </li>
 						<li>生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：
-                           <input type="text" id="birth_day" name="birday" value="{{ request.user.birthday|default_if_none:'' }}" readonly="readonly"/>
+                           <input type="text" id="birth_day" name="birthday" value="{{ request.user.birthday|default_if_none:'' }}" readonly="readonly"/>
                             <i class="error-tips"></i>
 						</li>
 						<li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
@@ -57,7 +57,7 @@
 						    <i class="error-tips"></i>
                         </li>
 						<li>手&nbsp;&nbsp;机&nbsp;&nbsp;号：
-                            <input type="text" name="mobile" id="mobile" placeholder="请输入你的手机号码" value="{{ request.user.mobile|default_if_none:'' }}" maxlength="10">
+                            <input type="text" name="mobile" id="mobile" placeholder="请输入你的手机号码" value="{{ request.user.mobile|default_if_none:'' }}" maxlength="11">
                         </li>
                         <li>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：
                         	<input class="borderno" type="text" name="email" readonly="readonly" value="{{ request.user.email }}"/>

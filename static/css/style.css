@@ -3333,9 +3333,29 @@ footer .footer .line {
 .butler_list_box dt img {
     width: 100px;
     /*float: left;*/
+    /*margin-left: 42px;*/
+    text-align: center;
+}
+
+.butler_list_box .teacher-image-list img {
+    width: 50px;
+    /*float: left;*/
+    /*margin-left: 42px;*/
+    text-align: center;
+}
+
+.butler_list_box .org-image-list img {
+    width: 100px;
+    /*float: left;*/
     margin-left: 42px;
     text-align: center;
+}
 
+.butler_list_box .hot-org-image-list img {
+    width: 60px;
+    /*float: left;*/
+    /*margin-left: 42px;*/
+    text-align: center;
 }
 
 .butler_list_box dt .btn {
@@ -3520,6 +3540,14 @@ footer .footer .line {
 }
 
 .butler_list_box .right dd {
+    width: auto;
+    height: 50px;
+    /*margin-top: 10px;*/
+    line-height: 150%;
+    float: left;
+}
+
+.butler_list_box .right .teacher-text-list {
     width: auto;
     height: 50px;
     /*margin-top: 10px;*/
@@ -4961,6 +4989,17 @@ footer .footer .line {
     margin-top: 25px;
     overflow: hidden;
 }
+
+.butler_list.company .org-image-list {
+    width: 184px;
+    height: 100px;
+    border: 1px solid #e5e5e5;
+    /*border-width: 1px;*/
+    /*border-radius: 0;*/
+    margin-top: 25px;
+    overflow: hidden;
+}
+
 
 .butler_list.company dd {
     width: 678px !important;

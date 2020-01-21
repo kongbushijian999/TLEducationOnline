@@ -16,7 +16,6 @@ urlpatterns = [
 
     # 发送邮箱验证码
     path('sendemail_code/', SendEmailCodeView.as_view(), name='sendemail_code'),
-
     # 修改邮箱，验证收到的验证码
     path('update_email/', UpdateEmailView.as_view(), name='update_email'),
 
