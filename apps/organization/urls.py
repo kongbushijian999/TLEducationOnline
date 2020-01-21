@@ -15,8 +15,8 @@ urlpatterns = [
 
     # 机构收藏
     path('add_fav/', AddFavView.as_view(), name='add_fav'),
-    # 讲师列表页
+    # 教师列表页
     path('teacher/list/', TeacherListView.as_view(), name='teacher_list'),
-    # 讲师详情页
+    # 教师详情页
     re_path(r'^teacher/detail/(?P<teacher_id>\d+)/$', TeacherDetailView.as_view(), name='teacher_detail'),
 ]

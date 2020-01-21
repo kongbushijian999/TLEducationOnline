@@ -62,7 +62,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('fav_id', models.IntegerField(default=0, verbose_name='数据id')),
-                ('fav_type', models.IntegerField(choices=[(1, '课程'), (2, '课程结构'), (3, '讲师')], default=1, verbose_name='收藏类型')),
+                ('fav_type', models.IntegerField(choices=[(1, '课程'), (2, '课程结构'), (3, '教师')], default=1, verbose_name='收藏类型')),
                 ('add_time', models.DateTimeField(default=datetime.datetime.now, verbose_name='收藏时间')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='用户')),
             ],

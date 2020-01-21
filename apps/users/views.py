@@ -277,7 +277,7 @@ class MyFavOrgView(LoginRequiredMixin, View):
 
 
 class MyFavTeacherView(LoginRequiredMixin, View):
-    # 我收藏的授课讲师
+    # 我收藏的授课教师
     def get(self, request):
         teacher_list = []
         fav_teachers = UserFavorite.objects.filter(user=request.user, fav_type=3)

@@ -53,7 +53,7 @@ class OrgView(View):
         except PageNotAnInteger:
             page = 1
 
-        p = Paginator(all_orgs, 5, request=request)
+        p = Paginator(all_orgs, 3, request=request)
         orgs = p.page(page)
 
         return render(request, 'org-list.html', {
@@ -219,7 +219,7 @@ class AddFavView(View):
 
 
 class TeacherListView(View):
-    # 课程讲师列表页
+    # 课程教师列表页
     def get(self, request):
         all_teachers = Teacher.objects.all()
 
@@ -238,13 +238,13 @@ class TeacherListView(View):
 
         sort_teachers = Teacher.objects.all().order_by('-click_nums')[:3]
 
-        # 对讲师进行分页
+        # 对教师进行分页
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
             page = 1
 
-        p = Paginator(all_teachers, 1, request=request)
+        p = Paginator(all_teachers, 3, request=request)
         teachers = p.page(page)
 
         return render(request, 'teachers-list.html', {
@@ -269,7 +269,7 @@ class TeacherDetailView(View):
             if UserFavorite.objects.filter(user=request.user, fav_type=2, fav_id=teacher.org.id):
                 has_org_faved = True
 
-        # 讲师排行
+        # 教师排行
         sort_teachers = Teacher.objects.all().order_by('-click_nums')[:3]
         return render(request, 'teacher-detail.html', {
             'teacher': teacher,

@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='course',
             name='teacher',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='organization.Teacher', verbose_name='讲师'),
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='organization.Teacher', verbose_name='教师'),
         ),
     ]

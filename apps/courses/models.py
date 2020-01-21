@@ -10,7 +10,7 @@ class Course(models.Model):
     # Course -> Lesson -> Video
     # 课程基本信息 -> 章节信息 -> 章节下视频信息
     course_org = models.ForeignKey(CourseOrg, verbose_name='课程机构', null=True, on_delete=models.CASCADE)
-    teacher = models.ForeignKey(Teacher, verbose_name='讲师', null=True, on_delete=models.CASCADE)
+    teacher = models.ForeignKey(Teacher, verbose_name='教师', null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, verbose_name='课程名')
     desc = models.CharField(max_length=300, verbose_name='课程描述')
     detail = UEditorField(verbose_name=u"课程详情",width=600, height=600, imagePath="courses/ueditor/",

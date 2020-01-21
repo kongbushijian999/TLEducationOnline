@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}课程讲师 - TL在线教育{% endblock %}
+{% block title %}课程教师 - TL在线教育{% endblock %}
 {% block custom_bread %}
 <section>
     <div class="wp">
         <ul  class="crumbs">
-            <li><a href="/">首页</a>></li>
-            <li>课程讲师</li>
+            <li><a href="{% url 'index' %}">首页</a>></li>
+            <li>课程教师</li>
         </ul>
     </div>
 </section>
@@ -36,7 +36,7 @@
                             <div class="fr btn2 bdsharebuttonbox"
                                  data-text="授课教师-奥巴马-TL在线教育"
                                  data-desc="我在#TL在线教育#发现了教师“奥巴马”，对学习中的小伙伴很有帮助，一起来看看吧。"
-                                 data-comment="奥巴马金牌讲师，从业年限：5年"
+                                 data-comment="奥巴马金牌教师，从业年限：5年"
                                  >
                                 <span class="fl">分享</span>
                                 <a href="#" class="bds_more" data-cmd="more"></a>
@@ -45,12 +45,13 @@
                     </dt>
                     <dd>
                         <a href="{% url 'teacher_detail' teacher.id %}">
-                            <h1>{{ teacher.name }}<span class="key picbig">金牌讲师</span></h1>
+                            <h1>{{ teacher.name }}<span class="key picbig">金牌教师</span></h1>
                         </a>
                         <ul class="cont">
                             <li>工作年限：<span>{{ teacher.work_years }}年</span></li>
                             <li>工作职位：<span>{{ teacher.work_position }}</span></li>
                             <li>就职公司：<span>{{ teacher.work_company }}&nbsp;</span></li>
+                            <li>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄：<span>{{ teacher.age }}</span></li>
                             <li>教学特点：<span>{{ teacher.points }}</span></li>
                         </ul>
                     </dd>
@@ -84,19 +85,20 @@
             </div>
 	</div>
 	<div class="right layout">
-		<div class="head">讲师排行榜</div>
+		<div class="head">教师排行榜</div>
             {% for hot_teacher in sort_teachers %}
                 <dl class="des">
-                    <span class="num fl">1</span>
-                    <a href="/diary/hk_detail/6/">
+                    <span class="num fl">{{ forloop.counter }}</span>
+                    <a href="{% url 'teacher_detail' hot_teacher.id %}">
                         <dt>
                             <img width="50" height="50" class="scrollLoading"  src="{{ MEDIA_URL }}{{ hot_teacher.image }}"/>
                         </dt>
                     </a>
                     <dd>
-                        <a href="/diary/hk_detail/6/">
+                        <a href="{% url 'teacher_detail' hot_teacher.id %}">
                             <h1 title="{{ hot_teacher.name }}">{{ hot_teacher.name }}</h1>
                         </a>
+                        <p>{{ hot_teacher.org }}</p>
                         <p>工作年限：<span>{{ hot_teacher.work_years }}年</span></p>
                     </dd>
                 </dl>
