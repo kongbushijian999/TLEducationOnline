@@ -125,6 +125,7 @@ $(function(){
     });
 
 
+
     //input获得焦点样式
     $('.perinform input[type=text]').focus(function(){
         $(this).parent('li').addClass('focus');
@@ -170,8 +171,8 @@ $(function(){
             success: function(data) {
                 if(data.nick_name){
                     _showValidateError($('#nick_name'), data.nick_name);
-                }else if(data.birday){
-                   _showValidateError($('#birth_day'), data.birday);
+                }else if(data.birthday){
+                   _showValidateError($('#birth_day'), data.birthday);
                 }else if(data.address){
                    _showValidateError($('#address'), data.address);
                 }else if(data.status == "failure"){

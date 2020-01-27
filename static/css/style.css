@@ -1899,7 +1899,7 @@ textarea:focus {
 }
 
 .group_list .box img {
-    height: 190px;
+    height: 160px;
 }
 
 .group_list .des {
@@ -5369,7 +5369,7 @@ footer .footer .line {
 }
 
 .companycenter .group_list .box {
-    height: 300px;
+    height: 270px;
     position: relative;
     margin: 30px 10px;
     width: 214px !important;

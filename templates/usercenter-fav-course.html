@@ -6,11 +6,23 @@
         <div class="wp">
             <ul  class="crumbs">
                 <li><a href="{% url 'index' %}">首页</a>></li>
-                <li><a href="/user/home/">个人中心</a>></li>
+                <li><a href="{% url 'user_info' %}">个人中心</a>></li>
                 <li>我的收藏</li>
             </ul>
         </div>
     </section>
+{% endblock %}
+
+{% block left_content %}
+    <div class="left">
+        <ul>
+            <li ><a href="{% url 'user_info' %}">个人资料</a></li>
+            <li ><a href="{% url 'mycourse' %}">我的课程</a></li>
+            <li class="active2"><a href="{% url 'myfav_org' %}">我的收藏</a></li>
+            <li ><a href="{% url 'mymessage' %}" style="position: relative;">我的消息</a>
+            </li>
+        </ul>
+    </div>
 {% endblock %}
 
 {% block right_content %}
@@ -27,14 +39,13 @@
                         <li><a href="{% url 'myfav_teacher' %}">授课教师 </a></li>
                         <li class="active"><a href="{% url 'myfav_course' %}">公开课程</a></li>
                     </ul>
-
                 </div>
                 <div class="companycenter">
                     <div class="group_list brief">
                         {% for course in course_list %}
                             <div class="module1_5 box">
                                 <a href="{% url 'course_detail' course.id %}">
-                                    <img width="214" height="190" src="{{ MEDIA_URL }}{{ course.image }}"/>
+                                    <img width="214" height="160" src="{{ MEDIA_URL }}{{ course.image }}"/>
                                 </a>
                                 <div class="des">
                                     <a href="{% url 'course_detail' course.id %}"><h2>{{ course.name }}</h2></a>
@@ -53,5 +64,4 @@
             </div>
         </div>
 {% endblock %}
-
 

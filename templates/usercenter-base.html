@@ -10,10 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="/static/css/animate.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <link rel="stylesheet" type="text/css" href="/static/js/plugins/queryCity/css/cityLayout.css">
-
     <link rel="stylesheet" type="text/css" href="/static/css/lq.datetimepick.css"/>
     {% block custom_css %}{% endblock %}
-
 
     <script src="/static/js/jquery.min.js" type="text/javascript"></script>
     <script src="/static/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
@@ -86,18 +84,18 @@
 
 <section>
 	<div class="wp list personal_list">
-	<div class="left">
-        <ul>
-            <li class="active2"><a href="{% url 'user_info' %}">个人资料</a></li>
-            <li ><a href="{% url 'mycourse' %}">我的课程</a></li>
-            <li ><a href="{% url 'myfav_org' %}">我的收藏</a></li>
-            <li >
-                <a href="{% url 'mymessage' %}" style="position: relative;">
-                    我的消息
-                </a>
-            </li>
-        </ul>
-	</div>
+    {% block left_content %}
+    	<div class="left">
+            <ul>
+                <li class="active2"><a href="{% url 'user_info' %}">个人资料</a></li>
+                <li ><a href="{% url 'mycourse' %}">我的课程</a></li>
+                <li ><a href="{% url 'myfav_org' %}">我的收藏</a></li>
+                <li ><a href="{% url 'mymessage' %}" style="position: relative;">我的消息</a>
+                </li>
+            </ul>
+        </div>
+    {% endblock %}
+
 
     {% block right_content %}
         <div class="right">
@@ -130,7 +128,7 @@
                                 <i class="error-tips"></i>
                             </li>
                             <li>生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：
-                               <input type="text" id="birth_day" name="birday" value="2009年9月2日" readonly="readonly"/>
+                               <input type="text" id="birth_day" name="birthday" value="2009年9月2日"/>
                                 <i class="error-tips"></i>
                             </li>
                             <li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
@@ -138,11 +136,11 @@
                                 <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="female" checked="checked">女</label>
                             </li>
                             <li class="p_infor_city">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：
-                                <input type="text" name="address" id="address" placeholder="请输入你的地址" value="我来自火星" maxlength="10">
+                                <input type="text" name="address" id="address" placeholder="请输入你的地址" value="我来自火星" maxlength="100">
                                 <i class="error-tips"></i>
                             </li>
                             <li>手&nbsp;&nbsp;机&nbsp;&nbsp;号：
-                                <input type="text" name="mobile" id="mobile" placeholder="请输入你的手机号码" value="" maxlength="10">
+                                <input type="text" name="mobile" id="mobile" placeholder="请输入你的手机号码" value="" maxlength="11">
                             </li>
                             <li>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：
                                 <input class="borderno" type="text" name="email" readonly="readonly" value="projectsedu@sina.com"/>
@@ -316,66 +314,60 @@
 <script src="/static/js/deco-user.js"></script>
 {% block custom_js %}{% endblock %}
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('.jsDeleteFav_course').on('click', function () {
-            var _this = $(this),
-                favid = _this.attr('data-favid');
-            alert(favid)
-            $.ajax({
-                cache: false,
-                type: "POST",
-                url: "{% url 'add_fav' %}",
-                data: {
-                    fav_type: 1,
-                    fav_id: favid,
-                    csrfmiddlewaretoken: '{{ csrf_token }}'
-                },
-                async: true,
-                success: function (data) {
-                    Dml.fun.winReload();
-                }
-            });
-        });
-    });
-    $(document).ready(function() {
-        $('.jsDeleteFav_teacher').on('click', function () {
-            var _this = $(this),
-                favid = _this.attr('data-favid');
-            $.ajax({
-                cache: false,
-                type: "POST",
-                url: "{% url 'add_fav' %}",
-                data: {
-                    fav_type: 3,
-                    fav_id: favid,
-                    csrfmiddlewaretoken: '{{ csrf_token }}'
-                },
-                async: true,
-                success: function (data) {
-                    Dml.fun.winReload();
-                }
-            });
+    $('.jsDeleteFav_course').on('click', function () {
+        var _this = $(this),
+            favid = _this.attr('data-favid');
+        $.ajax({
+            cache: false,
+            type: "POST",
+            url: "{% url 'add_fav' %}",
+            data: {
+                fav_type: 1,
+                fav_id: favid,
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            async: true,
+            success: function (data) {
+                Dml.fun.winReload();
+            }
         });
     });
 
-    $(document).ready(function() {
-        $('.jsDeleteFav_org').on('click', function () {
-            var _this = $(this),
-                favid = _this.attr('data-favid');
-            $.ajax({
-                cache: false,
-                type: "POST",
-                url: "{% url 'add_fav' %}",
-                data: {
-                    fav_type: 2,
-                    fav_id: favid,
-                    csrfmiddlewaretoken: '{{ csrf_token }}'
-                },
-                async: true,
-                success: function (data) {
-                    Dml.fun.winReload();
-                }
-            });
+    $('.jsDeleteFav_teacher').on('click', function () {
+        var _this = $(this),
+            favid = _this.attr('data-favid');
+        $.ajax({
+            cache: false,
+            type: "POST",
+            url: "{% url 'add_fav' %}",
+            data: {
+                fav_type: 3,
+                fav_id: favid,
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            async: true,
+            success: function (data) {
+                Dml.fun.winReload();
+            }
+        });
+    });
+
+    $('.jsDeleteFav_org').on('click', function () {
+        var _this = $(this),
+            favid = _this.attr('data-favid');
+        $.ajax({
+            cache: false,
+            type: "POST",
+            url: "{% url 'add_fav' %}",
+            data: {
+                fav_type: 2,
+                fav_id: favid,
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            async: true,
+            success: function (data) {
+                Dml.fun.winReload();
+            }
         });
     });
 </script>

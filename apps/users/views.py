@@ -184,6 +184,7 @@ class UserInfoView(LoginRequiredMixin, View):
         return render(request, 'usercenter-info.html', {})
 
     def post(self, request):
+        # ModelForm中要加上instance=request.user，用于指明是当前实例，不加上的话就会在save()时新建一个实例
         user_info_form = UserInfoForm(request.POST, instance=request.user)
         if user_info_form.is_valid():
             user_info_form.save()
@@ -211,7 +212,7 @@ class UploadImageView(LoginRequiredMixin, View):
             return HttpResponse('{"status":"fail"}', content_type='application/json')
 
 
-class UpdatePwdView(View):
+class UpdatePwdView(LoginRequiredMixin, View):
     # 在个人中心修改用户密码
     def post(self, request):
         modify_form = ModifyPwdForm(request.POST)
