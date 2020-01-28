@@ -14,14 +14,20 @@
 				<div class="fl">
 					<div class="imgslide">
 						<ul class="imgs">
-                            {% for banner in all_banners %}
+{#                            {% for banner in all_banners %}#}
+{#                                <li>#}
+{#                                    <a href="{{ banner.url }}">#}
+{#                                        <img width="1200" height="478" src="{{ MEDIA_URL }}{{ banner.image }}" />#}
+{#                                    </a>#}
+{#                                </li>#}
+{#                            {% endfor %}#}
+                            {% for banner_course in banner_courses %}
                                 <li>
-                                    <a href="{{ banner.url }}">
-                                        <img width="1200" height="478" src="{{ MEDIA_URL }}{{ banner.image }}" />
+                                    <a href="{% url 'course_detail' banner_course.id %}">
+                                        <img width="1230" height="478" src="{{ MEDIA_URL }}{{ banner_course.image }}" />
                                     </a>
                                 </li>
                             {% endfor %}
-
 						</ul>
 					</div>
 					<div class="unslider-arrow prev"></div>
@@ -75,10 +81,9 @@
                                     {% for banner_course in banner_courses %}
                                         <li>
                                             <a href="{% url 'course_detail' banner_course.id %}">
-                                                <img width="470" height="300" src="{{ MEDIA_URL }}{{ banner_course.image }}" />
+                                                <img src="{{ MEDIA_URL }}{{ banner_course.image }}" />
                                             </a>
                                         </li>
-
                                     {% endfor %}
 
 								</ul>
@@ -93,13 +98,13 @@
                                     </a>
                                     <div class="des">
                                         <a href="{% url 'course_detail' course.id %}">
-                                            <h2 title="django入门">{{ course.name }}</h2>
+                                            <h2 title="{{ course.name }}">{{ course.name }}</h2>
                                         </a>
                                         <span class="fl">难度：<i class="key">{{ course.get_degree_display }}</i></span>
                                         <span class="fr">学习人数：{{ course.students }}</span>
                                     </div>
                                     <div class="bottom">
-                                        <span class="fl" title="TL在线教育">{{ course.course_org.name }}</span>
+                                        <span class="fl" title="{{ course.course_org.name }}">{{ course.course_org.name }}</span>
                                         <span class="star fr">{{ course.fav_nums }}</span>
                                     </div>
                                 </div>
@@ -126,14 +131,14 @@
                                 <li class="{% if forloop.counter|divisibleby:5 %}five{% endif %}">
                                     <a href="{% url 'org_home' course_org.id %}">
                                         <div class="company">
-                                            <img  height="100" src="{{ MEDIA_URL }}{{ course_org.image }}"/>
+                                            <img height="100" src="{{ MEDIA_URL }}{{ course_org.image }}"/>
                                             <div class="score">
                                                 <div class="circle">
                                                     <h2>{{ course_org.tag }}</h2>
                                                 </div>
                                             </div>
                                         </div>
-                                        <p><span class="key" title="TL在线教育">{{ course_org.name }}</span></p>
+                                        <p><span class="key" title="{{ course_org.name }}">{{ course_org.name }}</span></p>
                                     </a>
                                 </li>
                             {% endfor %}

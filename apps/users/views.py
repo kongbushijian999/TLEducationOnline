@@ -36,7 +36,7 @@ class LogoutView(View):
     # 用户登出
     def get(self, request):
         logout(request)
-        # 重定向到首页
+        # 重定向到首页，而不是return render
         return HttpResponseRedirect(reverse('index'))
 
 

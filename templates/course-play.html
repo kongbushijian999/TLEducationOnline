@@ -56,9 +56,9 @@
                         <li><a id="commentOn" class="" href="{% url 'course_comments' course.id %}"><span>评论</span></a></li>
                     </ul>
                 </div>
-                <div id="notice" class="clearfix">
-                    <div class="l"> <strong>课程公告:</strong> <a  href="javascript:void(0)">Spring的文档以及相关的jar文件已上传</a> </div>
-                </div>
+{#                <div id="notice" class="clearfix">#}
+{#                    <div class="l"> <strong>课程公告:</strong> <a  href="javascript:void(0)">Spring的文档以及相关的jar文件已上传</a> </div>#}
+{#                </div>#}
 
                 <div class="mod-chapters">
                     {% for lesson in course.get_course_lesson %}
@@ -90,7 +90,7 @@
                             {% for course_resource in course_resources %}
                                 <li>
                                     <span ><i class="aui-iconfont aui-icon-file"></i>&nbsp;&nbsp;{{ course_resource.name }}</span>
-                                    <a href="{{ MEDIA_URL }}{{ course_resource.download }}" class="downcode" target="_blank" download="" data-id="274" title="">下载</a>
+                                    <a href="{{ MEDIA_URL }}{{ course_resource.download }}" class="downcode" target="_blank" download="" data-id="274">下载</a>
                                 </li>
                             {% endfor %}
                        </ul>

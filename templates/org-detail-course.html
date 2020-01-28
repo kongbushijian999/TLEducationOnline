@@ -9,7 +9,7 @@
         <div class="brief group_list">
             {% for course in all_courses %}
                 <div class="module1_5 box">
-                    <a class="comp-img-box" href="{% url 'course_detail' course.id %}">
+                    <a class="org-detail-course-comp-img-box" href="{% url 'course_detail' course.id %}">
                         <img width="214" height="195" src="{{ MEDIA_URL }}{{ course.image }}"/>
                     </a>
                     <div class="des">
@@ -29,11 +29,11 @@
 
 
         </div>
-        <div class="pageturn">
-            <ul class="pagelist">
-                <li class="active"><a href="?page=1">1</a></li>
-            </ul>
-        </div>
+{#        <div class="pageturn">#}
+{#            <ul class="pagelist">#}
+{#                <li class="active"><a href="?page=1">1</a></li>#}
+{#            </ul>#}
+{#        </div>#}
     </div>
 {% endblock %}
 

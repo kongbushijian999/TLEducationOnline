@@ -1751,12 +1751,13 @@ textarea:focus {
 
 .feature li {
     float: left;
-    width: 24%;
+    width: 24.9%;
     height: 90px;
     margin-top: 17px;
     border-left: 1px dashed #ccc;
     position: relative;
 }
+
 
 .feature li:first-child {
     border: 0;
@@ -1902,6 +1903,10 @@ textarea:focus {
     height: 160px;
 }
 
+.group_list .box .course-list-image {
+    height: 190px;
+}
+
 .group_list .des {
     width: 94%;
     margin-left: 3%;
@@ -1995,7 +2000,7 @@ textarea:focus {
 }
 
 .module1 .imgslide2 {
-    width: 470px;
+    width: 100%;
     height: 100%;
     overflow: hidden;
 }
@@ -2635,7 +2640,7 @@ footer .footer .line {
 .listoptions .cont {
     width: 950px;
     margin-left: 140px;
-    height: 50px;
+    /*height: 50px;*/
     overflow: hidden;
 }
 
@@ -3310,6 +3315,14 @@ footer .footer .line {
     position: relative;
 }
 
+.butler_list .teachers-list-des {
+    width: 903px;
+    height: 140px;
+    border-bottom: 1px solid #e3e3e3;
+    padding: 20px;
+    position: relative;
+}
+
 .butler_list .des:last-child {
     border: 0;
 }
@@ -3321,6 +3334,17 @@ footer .footer .line {
 
 .butler_list_box .picpic, .butler_detail_list .picpic {
     margin-bottom: 20px;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 5px solid #e3e3e3;
+    float: left;
+    text-align: center;
+}
+
+.butler_list_box .teachers-list-picpic, .butler_detail_list .teachers-list-picpic {
+    margin-top: 20px;
     width: 100px;
     height: 100px;
     overflow: hidden;
@@ -3651,6 +3675,22 @@ footer .footer .line {
     cursor: pointer;
     text-indent: 18px;
     margin-right: 5px;
+    margin-top: 0;
+    width: 95px;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    display: block;
+    float: left;
+}
+
+.butler_detail_list .btn #jsLeftBtn {
+    border-radius: 3px;
+    cursor: pointer;
+    text-indent: 18px;
+    margin-left: 45px;
     margin-top: 0;
     width: 95px;
     height: 30px;
@@ -8606,6 +8646,15 @@ table .upload-btn {
     position: relative;
     display: block;
     height: 190px;
+    line-height: normal;
+    border-bottom: 1px solid #eaeaea;
+    overflow: hidden;
+}
+
+.org-detail-course-comp-img-box {
+    position: relative;
+    display: block;
+    height: 160px;
     line-height: normal;
     border-bottom: 1px solid #eaeaea;
     overflow: hidden;

@@ -25,23 +25,23 @@
                 <div class="fr butler-num">共<span class="key">9</span>人&nbsp;&nbsp;&nbsp;</div>
 			</div>
             {% for teacher in all_teachers.object_list %}
-                <dl class="des">
+                <dl class="teachers-list-des">
                     <dt>
                         <a href="{% url 'teacher_detail' teacher.id %}">
-                            <div class="picpic">
+                            <div class="teachers-list-picpic">
                                 <img width="100" height="100" class="scrollLoading" src="{{ MEDIA_URL }}{{ teacher.image }}"/>
                             </div>
                         </a>
-                        <div class="btn">
-                            <div class="fr btn2 bdsharebuttonbox"
-                                 data-text="授课教师-奥巴马-TL在线教育"
-                                 data-desc="我在#TL在线教育#发现了教师“奥巴马”，对学习中的小伙伴很有帮助，一起来看看吧。"
-                                 data-comment="奥巴马金牌教师，从业年限：5年"
-                                 >
-                                <span class="fl">分享</span>
-                                <a href="#" class="bds_more" data-cmd="more"></a>
-                            </div>
-                        </div>
+{#                        <div class="btn">#}
+{#                            <div class="fr btn2 bdsharebuttonbox"#}
+{#                                 data-text="授课教师-奥巴马-TL在线教育"#}
+{#                                 data-desc="我在#TL在线教育#发现了教师“奥巴马”，对学习中的小伙伴很有帮助，一起来看看吧。"#}
+{#                                 data-comment="奥巴马金牌教师，从业年限：5年"#}
+{#                                 >#}
+{#                                <span class="fl">分享</span>#}
+{#                                <a href="#" class="bds_more" data-cmd="more"></a>#}
+{#                            </div>#}
+{#                        </div>#}
                     </dt>
                     <dd>
                         <a href="{% url 'teacher_detail' teacher.id %}">

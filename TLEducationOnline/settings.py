@@ -138,7 +138,12 @@ USE_TZ = False  #为True时使用国际时间，用False则使用本地时间
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 # 配置static目录路劲
 STATIC_URL = '/static/'
+# 当DEBUG为TRUE时，STATICFILES_DIRS有用，要保留。
+# 当DEBUG为FALSE时，就默认为生产环境，STATICFILES_DIRS将不再起作用，需要自己重新配置STATIC_ROOT
+# 此时必须将注释掉STATICFILES_DIRS，否则会报错说它包含新配置的STATIC_ROOT
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 EMAIL_HOST = 'smtp.sina.com'
 EMAIL_PORT = 587
@@ -151,4 +156,3 @@ EMAIL_FROM = 'tonglefight@sina.com'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')

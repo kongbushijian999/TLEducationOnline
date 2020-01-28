@@ -36,7 +36,7 @@
 						<ul class="parameter">
 							<li><span class="pram word3">时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长：</span><span>{{ course.learn_times }}</span></li>
                             <li><span class="pram word3">章&nbsp;节&nbsp;数：</span><span>{{ course.get_zj_nums }}</span></li>
-                            <li><span class="pram word3">课程类别：</span><span title="">{{ course.category }}</span></li>
+                            <li><span class="pram word3">课程类别：</span><span>{{ course.category }}</span></li>
 							<li class="piclist"><span class="pram word4">学习用户：</span>
                                 {% for user_course in course.get_learn_users %}
                                     <span class="pic"><img width="40" height="40" src="{{ MEDIA_URL }}{{ user_course.user.image }}"/></span>
@@ -51,21 +51,21 @@
                                 <div class="buy btn"><a style="color: white" href="{% url 'course_info' course.id%}">开始学习</a></div>
 						</div>
 					</div>
-                    <div class="group-share-box">
-                        <div class="bdsharebuttonbox"
-                             data-text="django开始了"
-                             data-desc="我在#TL在线教育#发现了"
-                             data-comment=""
-                             data-url="/group/groupdetail/15/">
-                            <span class="fl">分享到：</span>
-                            <a href="#" class="bds_more" data-cmd="more"></a>
-                            <a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a>
-                            <a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a>
-                            <a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a>
-                            <a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a>
-                            <a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a>
-                        </div>
-                    </div>
+{#                    <div class="group-share-box">#}
+{#                        <div class="bdsharebuttonbox"#}
+{#                             data-text="django开始了"#}
+{#                             data-desc="我在#TL在线教育#发现了"#}
+{#                             data-comment=""#}
+{#                             data-url="/group/groupdetail/15/">#}
+{#                            <span class="fl">分享到：</span>#}
+{#                            <a href="#" class="bds_more" data-cmd="more"></a>#}
+{#                            <a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a>#}
+{#                            <a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a>#}
+{#                            <a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a>#}
+{#                            <a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a>#}
+{#                            <a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a>#}
+{#                        </div>#}
+{#                    </div>#}
 				</div>
 				<div class="right">
 					<div class="head">
@@ -94,8 +94,7 @@
                             </li>
 							<li>所在地区：&nbsp;&nbsp;{{ course.course_org.address }}</li>
 							<li>认&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;证&nbsp;:
-                                &nbsp;&nbsp;
-								    <img title="金牌机构", src="/static/images/gold.png"/>
+                                &nbsp;&nbsp;<img title="金牌机构", src="/static/images/gold.png"/>
 							</li>
 						</ul>
 					</div>

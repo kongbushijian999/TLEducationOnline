@@ -38,10 +38,11 @@
             <div class="diarys">
                 <div class="module5 share company-diary-box" style="padding:10px 0;">
                     <div class="left">
-                        <img class="pic" src="{{ MEDIA_URL }}{{ teacher.image }}"/>
-                        <p>昵称：{{ teacher.name }}</p>
+                        <a href="{% url 'teacher_detail' teacher.id %}">
+                            <img class="pic" src="{{ MEDIA_URL }}{{ teacher.image }}"/>
+                        </a>
+                        <a href="{% url 'teacher_detail' teacher.id %}"><p>昵称：{{ teacher.name }}</p></a>
                     </div>
-
                 </div>
             </div>
         {% endfor %}
