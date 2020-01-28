@@ -53,13 +53,14 @@ class EmailVerifyRecordAdmin(object):
     list_display = ['code', 'email', 'send_type', 'send_time'] # 在前段显示的数据
     search_fields = ['code', 'email', 'send_type']             # 查询功能
     list_filter = ['code', 'email', 'send_type', 'send_time']  # 过滤筛选功能
-    # model_icon = 'fa fa-address-book-o'
+    model_icon = 'fa fa-envelope'
 
 
 class BannerAdmin(object):
     list_display = ['title', 'image', 'url', 'index', 'add_time']  # 在前段显示的数据
     search_fields = ['title', 'image', 'url', 'index']  # 查询功能
     list_filter = ['title', 'image', 'url', 'index', 'add_time']  # 过滤筛选功能
+    model_icon = 'fa fa-recycle'
 
 
 xadmin.site.register(EmailVerifyRecord, EmailVerifyRecordAdmin)

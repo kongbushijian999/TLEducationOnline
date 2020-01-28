@@ -19,9 +19,10 @@ class CourseAdmin(object):
     list_display = ['name', 'desc', 'detail', 'degree', 'learn_times', 'students', 'fav_nums', 'click_nums', 'add_time', 'get_zj_nums']
     search_fields = ['name', 'desc', 'detail', 'degree', 'students', 'fav_nums', 'click_nums']  # 查询功能
     list_filter = ['name', 'desc', 'detail', 'degree', 'learn_times', 'students', 'fav_nums', 'click_nums', 'add_time']  # 过滤筛选功能
-    ordering = ['-click_nums']          # xadmin排序后显示
-    readonly_fields = ['click_nums']    # 将click_nums字段设为只读
-    exclude = ['fav_nums']              # 隐藏字段，与只读readonly_fields是相互冲突的，不能既只读又隐藏
+    model_icon = 'fa fa-book'
+    ordering = ['-click_nums']          # xadmin默认排序后显示
+    # readonly_fields = ['click_nums']    # 将click_nums字段设为只读
+    # exclude = ['fav_nums']              # 隐藏字段，与只读readonly_fields是相互冲突的，不能既只读又隐藏
     # 将多个表拼到一起（有外键），在course下直接添加lesson，resource，但不能双层嵌套，即此时不能再在lesson中添加video
     inlines = [LessonInline, CourseResourceInline]
     list_editable = ['degree', 'desc']  # 在列表页直接修改
@@ -50,11 +51,13 @@ class CourseAdmin(object):
     #         course_org.course_nums = Course.objects.filter(course_org=course_org).count()
     #         course_org.save()
 
+
 # 一张表使用两个管理器，将所有课程分成轮播与课程两个管理器
 class BannerCourseAdmin(object):
     list_display = ['name', 'desc', 'detail', 'degree', 'learn_times', 'students']
     search_fields = ['name', 'desc', 'detail', 'degree', 'students']
     list_filter = ['name', 'desc', 'detail', 'degree', 'learn_times', 'students']
+    model_icon = 'fa fa-recycle'
     ordering = ['-click_nums']
     readonly_fields = ['click_nums']
     exclude = ['fav_nums']
@@ -71,18 +74,21 @@ class LessonAdmin(object):
     list_display = ['course', 'name', 'add_time']  # 在前段显示的数据
     search_fields = ['course', 'name']  # 查询功能
     list_filter = ['course__name', 'name', 'add_time'] # 过滤筛选功能
+    model_icon = 'fa fa-sitemap'
 
 
 class VideoAdmin(object):
     list_display = ['lesson', 'name', 'add_time']  # 在前段显示的数据
     search_fields = ['lesson', 'name']  # 查询功能
     list_filter = ['lesson', 'name', 'add_time']  # 过滤筛选功能
+    model_icon = 'fa fa-video-camera'
 
 
 class CourseResourceAdmin(object):
     list_display = ['course', 'name', 'download', 'add_time']  # 在前段显示的数据
     search_fields = ['course', 'name', 'download']  # 查询功能
     list_filter = ['course', 'name', 'download', 'add_time']  # 过滤筛选功能
+    model_icon = 'fa fa-folder'
 
 
 xadmin.site.register(Course, CourseAdmin)

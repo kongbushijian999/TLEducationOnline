@@ -8,30 +8,35 @@ class UserAskAdmin(object):
     list_display = ['name', 'mobile', 'course_name', 'add_time']  # 在前段显示的数据
     search_fields = ['name', 'mobile', 'course_name']  # 查询功能
     list_filter = ['name', 'mobile', 'course_name', 'add_time']  # 过滤筛选功能
+    model_icon = 'fa fa-question'
 
 
 class UserFavoriteAdmin(object):
     list_display = ['user', 'fav_id', 'fav_type', 'add_time']  # 在前段显示的数据
     search_fields = ['user', 'fav_id', 'fav_type']  # 查询功能
     list_filter = ['user', 'fav_id', 'fav_type', 'add_time']  # 过滤筛选功能
+    model_icon = 'fa fa-heart'
 
 
 class UserMessageAdmin(object):
     list_display = ['user', 'message', 'has_read', 'add_time']  # 在前段显示的数据
     search_fields = ['user', 'message', 'has_read']  # 查询功能
     list_filter = ['user', 'message', 'has_read', 'add_time']  # 过滤筛选功能
+    model_icon = 'fa fa-volume-up'
 
 
 class UserCourseAdmin(object):
     list_display = ['user', 'course', 'add_time']  # 在前段显示的数据
     search_fields = ['user', 'course']  # 查询功能
     list_filter = ['user', 'course', 'add_time']  # 过滤筛选功能
+    model_icon = 'fa fa-laptop'
 
 
 class CourseCommentsAdmin(object):
     list_display = ['user', 'course', 'comments', 'add_time']  # 在前段显示的数据
     search_fields = ['user', 'course', 'comments']  # 查询功能
     list_filter = ['user', 'course', 'comments', 'add_time']  # 过滤筛选功能
+    model_icon = 'fa fa-comments'
 
 
 xadmin.site.register(UserAsk, UserAskAdmin)
