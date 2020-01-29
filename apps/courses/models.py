@@ -36,7 +36,14 @@ class Course(models.Model):
     def get_zj_nums(self):
         # 获取课程章节数
         return self.lesson_set.all().count()
+    # 在xadmin中显示的内容，不设置则显示‘get_zj_nums’
     get_zj_nums.short_description = "章节数"
+
+    # 插入HTML代码，使用后需要在list_display[]中添加‘go_to’，这样就能在xadmin前端显示了
+    # def go_to(self):
+    #     from django.utils.safestring import mark_safe
+    #     return mark_safe("<a href='https://www.baidu.com/'>跳转</a>")
+    # go_to.short_description = "跳转到百度"
 
     def get_learn_users(self):
         # 获取学习了该课程的用户数据
@@ -54,6 +61,7 @@ class BannerCourse(Course):
     class Meta:
         verbose_name = "轮播课程"
         verbose_name_plural = verbose_name
+        # 必须这样设置，不然就会多生成一张表
         proxy = True
 
     def __str__(self):
