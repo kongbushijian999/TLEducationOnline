@@ -142,7 +142,7 @@ STATIC_URL = '/static/'
 # 当DEBUG为FALSE时，就默认为生产环境，STATICFILES_DIRS将不再起作用，需要自己重新配置STATIC_ROOT
 # 此时必须将注释掉STATICFILES_DIRS，否则会报错说它包含新配置的STATIC_ROOT
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 EMAIL_HOST = 'smtp.sina.com'

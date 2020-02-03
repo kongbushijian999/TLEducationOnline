@@ -1771,14 +1771,58 @@ textarea:focus {
 .feature .pic {
     position: absolute;
     top: 20px;
-    left: 125px;
+    left: 130px;
     transition: all 0.5s ease 0s;
 }
+
+/*.feature .pic_zyqw {*/
+/*    position: absolute;*/
+/*    top: 20px;*/
+/*    left: 134px;*/
+/*    transition: all 0.5s ease 0s;*/
+/*}*/
+/*.feature .pic_kczx {*/
+/*    position: absolute;*/
+/*    top: 20px;*/
+/*    left: 128px;*/
+/*    transition: all 0.5s ease 0s;*/
+/*}*/
+/*.feature .pic_mssk {*/
+/*    position: absolute;*/
+/*    top: 20px;*/
+/*    left: 136px;*/
+/*    transition: all 0.5s ease 0s;*/
+/*}*/
+/*.feature .pic_sjzs {*/
+/*    position: absolute;*/
+/*    top: 20px;*/
+/*    left: 133px;*/
+/*    transition: all 0.5s ease 0s;*/
+/*}*/
 
 .feature li:hover .pic {
     -webkit-animation: swing .4s .2s ease both;
     -moz-animation: swing .4s .2s ease both;
 }
+
+/*.feature feature1 .pic_zyqw {*/
+/*    -webkit-animation: swing .4s .2s ease both;*/
+/*    -moz-animation: swing .4s .2s ease both;*/
+/*}*/
+/*.feature feature2 .pic_kczx {*/
+/*    -webkit-animation: swing .4s .2s ease both;*/
+/*    -moz-animation: swing .4s .2s ease both;*/
+/*}*/
+/*.feature feature13 .pic_mssk {*/
+/*    -webkit-animation: swing .4s .2s ease both;*/
+/*    -moz-animation: swing .4s .2s ease both;*/
+/*}*/
+/*.feature feature4 .pic_sjzs {*/
+/*    -webkit-animation: swing .4s .2s ease both;*/
+/*    -moz-animation: swing .4s .2s ease both;*/
+/*}*/
+
+
 
 /*
 .feature .feature1{background: url(../images/feature1.png) no-repeat center 20px;}

@@ -115,7 +115,7 @@
                             <dl class="des">
                                 <span class="num fl">{{ forloop.counter }}</span>
                                 <a href="{% url 'teacher_detail' hot_teacher.id %}">
-                                    <dt>
+                                    <dt class="teacher-image-list">
                                         <img width="50" height="50" class="scrollLoading" src="{{ MEDIA_URL }}{{ hot_teacher.image }}"/>
                                     </dt>
                                 </a>
