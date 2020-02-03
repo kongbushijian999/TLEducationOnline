@@ -26,9 +26,9 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 SECRET_KEY = '=e^f@lpwnsf^jri#!oc0z_04k(%0xp8bcrfxbdqb#!c#g6qu1q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# 当DEBUG为TRUE时，有用，当DEBUG为FALSE时，就默认为生产环境，将不再起作用，需要自己重新配置
-# 此时必须注释掉，否则会报错说它包含新配置的STATIC_ROOT
-DEBUG = True
+# 当环境为开发环境时，需要设为True，此时404,500等错误页面会出现错误原因，便于调试
+# 当环境为生产环境时，需要设为False，此时404,500等页面就会显示我们配置的页面，避免信息的暴露和黑客的攻击
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 AUTHENTICATION_BACKENDS = ('users.views.CustomBackend',)
@@ -139,9 +139,13 @@ USE_TZ = False  #为True时使用国际时间，用False则使用本地时间
 # 配置static目录路劲
 STATIC_URL = '/static/'
 # 当DEBUG为TRUE时，STATICFILES_DIRS有用，要保留。
-# 当DEBUG为FALSE时，就默认为生产环境，STATICFILES_DIRS将不再起作用，需要自己重新配置STATIC_ROOT
-# 此时必须将注释掉STATICFILES_DIRS，否则会报错说它包含新配置的STATIC_ROOT
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# 当DEBUG为FALSE时，就默认为生产环境，STATICFILES_DIRS将不再起作用，需要自己重新配置STATIC_ROOT，
+# 此时必须将注释掉STATICFILES_DIRS，否则会报错说它包含新配置的STATIC_ROOT。
+
+# 这两个是不能共存的
+# 本地开发时，要DEBUG=True，保留STATICFILES_DIRS，注释掉STATIC_ROOT
+# 生产环境时，要DEBUG=False，注释掉STATICFILES_DIRS，保留STATIC_ROOT
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
