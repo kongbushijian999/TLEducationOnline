@@ -17,7 +17,7 @@ class Course(models.Model):
                                          filePath="courses/ueditor/", default='')
     degree = models.CharField(choices=(('cj', '初级'), ('zj', '中级'), ('gj', '高级')), max_length=2, verbose_name='难度')
     learn_times = models.IntegerField(default=0, verbose_name='学习时长（分钟数）')
-    students = models.IntegerField(default=0, verbose_name='学习人数')
+    students = models.IntegerField(default=0, verbose_name='学习次数')
     fav_nums = models.IntegerField(default=0, verbose_name='收藏人数')
     image = models.ImageField(upload_to='courses/%Y/%m', verbose_name='封面图', max_length=100)
     click_nums = models.IntegerField(default=0, verbose_name='点击数')

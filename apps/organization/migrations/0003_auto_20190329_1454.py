@@ -18,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='courseorg',
             name='students',
-            field=models.IntegerField(default=0, verbose_name='学习人数'),
+            field=models.IntegerField(default=0, verbose_name='学习次数'),
         ),
     ]
