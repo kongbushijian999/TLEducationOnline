@@ -223,7 +223,7 @@ class TeacherListView(View):
     def get(self, request):
         all_teachers = Teacher.objects.all()
 
-        # 机构搜索
+        # 教师搜索
         search_keywords = request.GET.get('keywords', '')  # 通过地址传递
         # 如果有这个keywords
         if search_keywords:
