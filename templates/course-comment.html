@@ -70,7 +70,9 @@
                         <div class="wgt-ipt-wrap pub-editor-wrap " id="js-pl-input-fake">
                             <textarea id="js-pl-textarea" class="" placeholder="扯淡、吐槽、表扬、鼓励……想说啥就说啥！" ></textarea>
                         </div>
+                        <textarea id="js-pf-textarea" class="pf-fextarea" placeholder="给出一个1~5的整数评分" ></textarea>
                         <input type="button" id="js-pl-submit" class="pub-btn" data-cid="452" value="发表评论">
+                        <input type="button" id="js-pf-submit" style="float: right" class="pub-btn" value="评分">
                         <p class="global-errortip js-global-error"></p>
                     </div>
                     <div id="course_note">
@@ -182,6 +184,38 @@
                     type: "POST",
                     url: "{% url 'add_comment' %}",
                     data: {'course_id': {{ course.id }}, 'comments': comments},
+                    async: true,
+                    beforeSend: function (xhr, settings) {
+                        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                    },
+                    success: function (data) {
+                        if (data.status == 'fail') {
+                            if (data.msg == '用户未登录') {
+                                window.location.href = "{% url 'login' %}";
+                            } else {
+                                alert(data.msg)
+                            }
+
+                        } else if (data.status == 'success') {
+                            window.location.reload();//刷新当前页面.
+                        }
+                    },
+                });
+            });
+        });
+        //添加评分
+        $(document).ready(function() {
+            $('#js-pf-submit').on('click', function () {
+                var scores = $("#js-pf-textarea").val()
+                if (scores != "1" && scores != "2" && scores != "3" && scores != "4" && scores != "5") {
+                    alert("请填写1~5的整数评分")
+                    return
+                }
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: "{% url 'add_score' %}",
+                    data: {'course_id': {{ course.id }}, 'scores': scores},
                     async: true,
                     beforeSend: function (xhr, settings) {
                         xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");

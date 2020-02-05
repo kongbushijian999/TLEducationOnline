@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import xadmin
-from .models import UserAsk, CourseComments, UserFavorite, UserMessage, UserCourse
+from .models import UserAsk, CourseComments, CourseScores, UserFavorite, UserMessage, UserCourse
 
 
 class UserAskAdmin(object):
@@ -39,8 +39,16 @@ class CourseCommentsAdmin(object):
     model_icon = 'fa fa-comments'
 
 
+class CourseScoresAdmin(object):
+    list_display = ['user', 'course', 'scores', 'add_time']  # 在前段显示的数据
+    search_fields = ['user', 'course', 'scores']  # 查询功能
+    list_filter = ['user', 'course', 'scores', 'add_time']  # 过滤筛选功能
+    model_icon = 'fa fa-star'
+
+
 xadmin.site.register(UserAsk, UserAskAdmin)
 xadmin.site.register(UserFavorite, UserFavoriteAdmin)
 xadmin.site.register(UserMessage, UserMessageAdmin)
 xadmin.site.register(UserCourse, UserCourseAdmin)
 xadmin.site.register(CourseComments, CourseCommentsAdmin)
+xadmin.site.register(CourseScores, CourseScoresAdmin)

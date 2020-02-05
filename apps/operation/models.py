@@ -36,6 +36,21 @@ class CourseComments(models.Model):
         return self.name
 
 
+class CourseScores(models.Model):
+    # 课程评分
+    user = models.ForeignKey(UserProfile, verbose_name='用户', on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, verbose_name='课程', on_delete=models.CASCADE)
+    scores = models.IntegerField(default=5, verbose_name='用户对课程的评分')
+    add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
+
+    class Meta:
+        verbose_name = '课程评分'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
+
+
 class UserFavorite(models.Model):
     # 用户收藏
     user = models.ForeignKey(UserProfile, verbose_name='用户', on_delete=models.CASCADE)

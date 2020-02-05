@@ -28,7 +28,7 @@ SECRET_KEY = '=e^f@lpwnsf^jri#!oc0z_04k(%0xp8bcrfxbdqb#!c#g6qu1q'
 # SECURITY WARNING: don't run with debug turned on in production!
 # 当环境为开发环境时，需要设为True，此时404,500等错误页面会出现错误原因，便于调试
 # 当环境为生产环境时，需要设为False，此时404,500等页面就会显示我们配置的页面，避免信息的暴露和黑客的攻击
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 AUTHENTICATION_BACKENDS = ('users.views.CustomBackend',)
@@ -145,8 +145,8 @@ STATIC_URL = '/static/'
 # 这两个是不能共存的
 # 本地开发时，要DEBUG=True，保留STATICFILES_DIRS，注释掉STATIC_ROOT
 # 生产环境时，要DEBUG=False，注释掉STATICFILES_DIRS，保留STATIC_ROOT
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 EMAIL_HOST = 'smtp.sina.com'

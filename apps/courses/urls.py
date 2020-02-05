@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from django.urls import path, re_path
-from .views import CourseListView, CourseDetailView, CourseInfoView, CommentsView, AddCommentsView,VideoPlayView
+from .views import CourseListView, CourseDetailView, CourseInfoView, CommentsView, AddCommentsView, AddScoreView, VideoPlayView
 
 urlpatterns = [
     # 课程列表页
@@ -15,7 +15,8 @@ urlpatterns = [
 
     # 添加课程评论
     path('add_comment/', AddCommentsView.as_view(), name='add_comment'),
-
+    # 添加课程评分
+    path('add_score/', AddScoreView.as_view(), name='add_score'),
     # 视频
     re_path(r'^video/(?P<video_id>\d+)/$', VideoPlayView.as_view(), name='video_play'),
 

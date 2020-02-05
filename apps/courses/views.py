@@ -5,7 +5,7 @@ from django.views.generic import View
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 
-from operation.models import UserFavorite, CourseComments, UserCourse
+from operation.models import UserFavorite, CourseComments, CourseScores, UserCourse
 from .models import Course, CourseResource, Video
 from utils.mixin_utils import LoginRequiredMixin
 # Create your views here.
@@ -158,6 +158,27 @@ class AddCommentsView(LoginRequiredMixin, View):
             course_comments.comments = comments
             course_comments.user = request.user
             course_comments.save()
+            return HttpResponse('{"status":"success", "msg":"添加成功"}', content_type='application/json')
+        else:
+            return HttpResponse('{"status":"fail", "msg":"添加失败"}', content_type='application/json')
+
+
+class AddScoreView(LoginRequiredMixin, View):
+    # 用户添加课程评分
+    def post(self, request):
+        # 判断用户是否登录
+        if not request.user.is_authenticated:  # 未登录时
+            return HttpResponse('{"status":"fail", "msg":"用户未登录"}', content_type='application/json')
+
+        course_id = request.POST.get('course_id', 0)
+        scores = request.POST.get('scores', '5')
+        if int(course_id) > 0 and scores:
+            course = Course.objects.get(id=int(course_id))
+            course_scores = CourseScores()
+            course_scores.course = course  # 赋值
+            course_scores.scores = int(scores)
+            course_scores.user = request.user
+            course_scores.save()
             return HttpResponse('{"status":"success", "msg":"添加成功"}', content_type='application/json')
         else:
             return HttpResponse('{"status":"fail", "msg":"添加失败"}', content_type='application/json')
