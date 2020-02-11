@@ -174,12 +174,19 @@ class AddScoreView(LoginRequiredMixin, View):
         scores = request.POST.get('scores', '5')
         if int(course_id) > 0 and scores:
             course = Course.objects.get(id=int(course_id))
-            course_scores = CourseScores()
-            course_scores.course = course  # 赋值
-            course_scores.scores = int(scores)
-            course_scores.user = request.user
-            course_scores.save()
-            return HttpResponse('{"status":"success", "msg":"添加成功"}', content_type='application/json')
+            user = request.user
+            course_scores = CourseScores.objects.filter(course=course, user=user)
+            if course_scores.exists():
+                for course_score in course_scores:
+                    course_score.scores = int(scores) # 赋值
+                    course_score.save()
+            else:
+                course_score = CourseScores()
+                course_score.course = course  # 赋值
+                course_score.scores = int(scores)
+                course_score.user = user
+                course_score.save()
+                return HttpResponse('{"status":"success", "msg":"添加成功"}', content_type='application/json')
         else:
             return HttpResponse('{"status":"fail", "msg":"添加失败"}', content_type='application/json')
 
