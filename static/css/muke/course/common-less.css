@@ -552,8 +552,9 @@ i {
     overflow: hidden;
 }
 .cp-other-learned .other-list li {
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: normal;
+    text-align: center;
     border-bottom: 1px solid #edf1f2;
 }
 .cp-other-learned .other-list li.curr img {
@@ -573,7 +574,7 @@ i {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 46px;
+    line-height: 23px;
 }
 .cp-other-learned .other-list li a {
     color: #787d82;

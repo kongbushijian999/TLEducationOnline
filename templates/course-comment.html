@@ -138,17 +138,17 @@
 
                         <div class="cp-other-learned  js-comp-tabs">
                             <div class="cp-header clearfix">
-                                <h2 class="cp-tit l">该课的同学还学过</h2>
+                                <h2 class="cp-tit l">你可能喜欢</h2>
                             </div>
                             <div class="cp-body">
                                 <div class="cp-tab-pannel js-comp-tab-pannel" data-pannel="course" style="display: block">
-                                    <!-- img 200 x 112 -->
                                     <ul class="other-list">
                                         {% for relate_course in relate_courses %}
                                             <li class="curr">
                                                 <a href="{% url 'course_detail' relate_course.id %}" target="_blank">
-                                                    <img src="{{ MEDIA_URL }}{{ relate_course.image }}" alt="{{ relate_course.name }}">
+                                                    <img style="width: 240px" src="{{ MEDIA_URL }}{{ relate_course.image }}" alt="{{ relate_course.name }}">
                                                     <span class="name autowrap">{{ relate_course.name }}</span>
+                                                    <span class="name autowrap">学习时长：<i class="key">{{ relate_course.learn_times }}</i>分钟</span>
                                                 </a>
                                             </li>
                                         {% endfor %}
