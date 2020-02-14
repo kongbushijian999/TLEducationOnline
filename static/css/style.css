@@ -5459,6 +5459,13 @@ footer .footer .line {
     width: 214px !important;
 }
 
+#teacher_detail_course{
+    height: 270px;
+    position: relative;
+    margin: 30px 4px;
+    width: 214px !important;
+}
+
 .companycenter .group_list .box .des {
     width: 95%;
     margin: 2%;
