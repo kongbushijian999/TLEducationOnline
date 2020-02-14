@@ -91,6 +91,9 @@ class CourseInfoView(LoginRequiredMixin, View):
         course.students += 1
         course.save()
 
+        course.course_org.students += 1
+        course.course_org.save()
+
         # 查询用户是否已经关联了该课程
         user_courses = UserCourse.objects.filter(user=request.user, course=course)
         if not user_courses:
