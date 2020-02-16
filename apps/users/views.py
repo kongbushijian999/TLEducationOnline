@@ -63,7 +63,7 @@ class LoginView(View):
                     login(request, user)
                     return HttpResponseRedirect(reverse('index'))
                 else:
-                    return render(request, 'login.html', {'msg': '用户未激活'})
+                    return render(request, 'login.html', {'msg': '用户未激活，请通过邮箱中的激活链接进行激活'})
             else:
                 return render(request, 'login.html', {'msg': '用户名或密码错误'})
         else:  # 如果登录失败，仍跳转到登录页面，加上错误提示后重新登录
