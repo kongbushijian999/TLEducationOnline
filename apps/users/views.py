@@ -93,8 +93,19 @@ class RegisterView(View):
         if register_form.is_valid():
             user_name = request.POST.get('email', '')
             # 注册之前先检查用户是否已经存在，若已经存在，则提示'用户已经存在'
-            if UserProfile.objects.filter(email=user_name):
+            if UserProfile.objects.filter(email=user_name, is_staff=True):
                 return render(request, 'register.html', {'register_form':register_form, 'msg': '用户已经存在'})
+            elif UserProfile.objects.filter(email=user_name, is_staff=False):
+                # 为邮件丢失的用户重新发送激活邮件
+                # 写入欢迎注册消息
+                user_message = UserMessage()
+                user_message.user = UserProfile.objects.get(email=user_name).id
+                user_message.message = '欢迎注册TL在线教育'
+                user_message.save()
+                # 调用utils.email_send里面的send_register_email()方法
+                send_register_email(user_name, 'register')
+                return render(request, 'login.html')
+
             pass_word = request.POST.get('password', '')
             user_profile = UserProfile()
             user_profile.username = user_name
