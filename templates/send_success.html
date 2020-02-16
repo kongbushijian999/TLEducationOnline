@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+{% load staticfiles %}
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+	<meta charset="UTF-8">
+	<title>邮件发送成功</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
 </head>
-<body>
-<p>邮件已发送，请查收</p>
+<body class="bg503 errorpage">
+<section>
+	<div class="wp">
+		<div class="cont">
+			<div class="fl error_cut"><img src="{% static 'images/pic500.png' %}"/></div>
+			<div class="fr error_cut">
+				<h1>邮件已发送，请查收</h1>
+			</div>
+		</div>
+	</div>
+</section>
 </body>
 </html>
