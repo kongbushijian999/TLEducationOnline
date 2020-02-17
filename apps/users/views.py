@@ -93,9 +93,14 @@ class RegisterView(View):
         if register_form.is_valid():
             user_name = request.POST.get('email', '')
             # 注册之前先检查用户是否已经存在，若已经存在，则提示'用户已经存在'
-            if UserProfile.objects.filter(email=user_name, is_staff=True):
+            if UserProfile.objects.filter(email=user_name, is_active=True):
                 return render(request, 'register.html', {'register_form':register_form, 'msg': '用户已经存在'})
-            elif UserProfile.objects.filter(email=user_name, is_staff=False):
+            elif UserProfile.objects.filter(email=user_name, is_active=False):
+                pass_word = request.POST.get('password', '')
+                user_profile = UserProfile.objects.get(email=user_name)
+                user_profile.password = make_password(pass_word)  # password加密
+                user_profile.save()
+
                 # 为邮件丢失的用户重新发送激活邮件
                 # 写入欢迎注册消息
                 user_message = UserMessage()
@@ -111,7 +116,7 @@ class RegisterView(View):
             user_profile.username = user_name
             user_profile.email = user_name
             user_profile.is_active = False
-            user_profile.password = make_password(pass_word) # password加密
+            user_profile.password = make_password(pass_word)  # password加密
             user_profile.save()
 
             # 写入欢迎注册消息
