@@ -157,13 +157,16 @@ class ForgetPwdView(View):
         if forget_form.is_valid():
             email = request.POST.get('email', '')
             # 调用utils.email_send里面的send_register_email()方法
+            # 邮件内包含：点击链接重置密码和链接
             send_register_email(email, 'forget')
             return render(request, 'send_success.html')
         else:
             return render(request, 'forgetpwd.html', {'forget_form': forget_form})
 
 
-class ResetView(View): # 重置密码
+class ResetView(View):
+    # 根据邮件中的链接的URL来匹配数据库中的信息，进行验证
+    # 和 激活 链接的作用一样，没有具体的HTML页面，只是为了URL中的数据信息
     def get(self, request, active_code):
         all_records = EmailVerifyRecord.objects.filter(code=active_code) # 通过code查找记录
         if all_records: # 如果不为空
@@ -176,7 +179,7 @@ class ResetView(View): # 重置密码
 
 
 class ModifyPwdView(View):
-    # 修改用户密码
+    # 修改用户密码的页面
     def post(self, request):
         modify_form = ModifyPwdForm(request.POST)
         if modify_form.is_valid():
